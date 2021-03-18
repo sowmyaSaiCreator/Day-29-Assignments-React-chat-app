@@ -37,7 +37,7 @@ function Chat(args) {
                             <div className="img_cont_msg">
                                 <img src={args.property.profileImg} className="rounded-circle user_img_msg" />
                             </div>
-                            <div className="msg_ner">
+                            <div className="msg_cotainer">
                                 {item.message}
                             </div>
                         </div> : <div className="d-flex justify-content-end mb-4" key={index}>

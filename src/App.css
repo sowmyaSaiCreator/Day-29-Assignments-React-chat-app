@@ -238,3 +238,6 @@ html {
 .pointerCursor{
   cursor: pointer;
 }
+.msg_ner {
+  margin: 6px;
+}
