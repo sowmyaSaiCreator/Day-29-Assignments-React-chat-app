@@ -84,6 +84,19 @@ function App() {
     ]
   );
   let [item, getItem] = useState(messageDetails[0]);
+
+  let updateMsg = (messageIndex) => {
+    let msg = document.getElementById(messageIndex).value;
+    let currentIndex = messageIndex.substr(8, 8);
+
+    let obj = {
+      message: msg,
+      position: false,
+    }
+    messageDetails[currentIndex].items.push(obj);
+    document.getElementById(messageIndex).value = " ";
+    addMessageDetail([...messageDetails]);
+  }
   return (
     <div className="container-fluid h-100 padMar20">
       <div className="row justify-content-center h-100">
@@ -100,8 +113,8 @@ function App() {
                         <div className="img_cont">
                           <img src={message.profileImg} className="rounded-circle user_img" />
                           {
-                            message.status?<span className="online_icon"></span>:<span className="offline_icon"></span>
-                        }
+                            message.status ? <span className="online_icon"></span> : <span className="offline_icon"></span>
+                          }
                         </div>
                         <div className="user_info">
                           <span>{message.name}</span>
@@ -116,7 +129,7 @@ function App() {
             <div className="card-footer"></div>
           </div></div>
         <div className="col-md-8 col-xl-6 chat">
-          {<Chat property={item} method={addMessageDetail} array={messageDetails}></Chat>}
+          {<Chat property={item} handleClick={updateMsg}></Chat>}
         </div>
       </div>
     </div>

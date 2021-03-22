@@ -2,19 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Chat(args) {
-    let updateMessageDetail = (args, method, array) => {
-
-        let msg = document.getElementById(args.messageIndex).value;
-        let currentIndex = args.messageIndex.substr(8, 8);
-
-        let obj = {
-            message: msg,
-            position: false,
-        }
-        array[currentIndex].items.push(obj);
-        document.getElementById(args.messageIndex).value = " ";
-        method([...array]);
-    }
     return (
         <div className="card">
             <div className="card-header msg_head">
@@ -56,8 +43,7 @@ function Chat(args) {
                 <div className="input-group">
                     <textarea name="" id={args.property.messageIndex} className="form-control type_msg" placeholder="Type your message..."></textarea>
                     <div className="input-group-append">
-                        <span className="input-group-text send_btn"  onClick={() => updateMessageDetail(args.property, args.method, args.array)}><FontAwesomeIcon icon="location-arrow" /></span> 
-                        {/* <button className="btn btn-success" onClick={() => updateMessageDetail(args.property, args.method, args.array)}>send</button> */}
+                        <span className="input-group-text send_btn"  onClick={() => args.handleClick(args.property.messageIndex)}><FontAwesomeIcon icon="location-arrow" /></span> 
                     </div>
                 </div>
             </div>
